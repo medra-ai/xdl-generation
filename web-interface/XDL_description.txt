@@ -40,13 +40,10 @@ All steps included in the Full Steps Specification may be given within the Proce
 
 
 Here is a list of tags that can be used in this language:
-Liquid Handling: Add, Separate, Transfer, 
-Stirring: StartStir, Stir, StopStir,
-Temperature Control: HeatChill, HeatChillToTemp, StartHeatChill, StopHeatChill
-Inert Gas: EvacuateAndRefill, Purge, StartPurge, StopPurge
-Filtration: Filter, FilterThrough, WashSolid
+Liquid Handling: Add, Separate, Transfer
+Resuspend: StartResuspend, Resuspend, StopResuspend,
 Special: Wait, Repeat,
-Other: CleanVessel, Crystallize, Dissolve, Dry, Evaporate, Irradiate, Precipitate, ResetHandling, RunColumn
+Other: Centrifuge
 
 Steps:
 Liquid Handling:
@@ -79,29 +76,55 @@ from_vessel	vessel	Vessel to transfer liquid from.
 to_vessel	vessel	Vessel to transfer liquid to.
 
 
-Stirring:
-StartStir:
+Resuspending:
+StartResuspend:
 Start stirring vessel.
 format(Property	Type	Description)
 vessel	vessel	Vessel to start stirring.
 
 
-Stir:
+Resuspend:
 Stir vessel for given time.
 format(Property	Type	Description)
 vessel	vessel	Vessel to stir.
 time	float	Time to stir vessel for.
 
 
-StopStir:
+StopResuspend:
 Stop stirring given vessel.
 format(Property	Type	Description)
 vessel	vessel	Vessel to stop stirring.
 
-Temperature Control:
-HeatChill:
-Heat or chill vessel to given temp for given time.
+Centrifuge:
+Centrifuge a sample
 format(Property	Type	Description)
-vessel	vessel	Vessel to heat or chill.
-temp	float	Temperature to heat or chill vessel to.
-time	float	Time to heat or chill vessel for.
+time    float   Time to centrifuge sample for.
+speed   float   Speed at which to centrifuge the sample for. 
+speed_mode str Either XG or RPM mode
+temperature float   Temperature at which to centrifuge at
+
+An example of a valid XDL would be:
+<XDL>
+ <Synthesis>
+    <Hardware>
+        <Component id="beaker"/>
+        <Component id="stir bar"/>
+    </Hardware>
+    <Reagents>
+        <Reagent name="acetic
+        acid"/>
+        <Reagent name="red
+        cabbage solution"/>
+    </Reagents>
+    <Procedure>
+        <Add vessel="beaker"
+        reagent="acetic acid"
+        amount="15 g"/>
+        <Add vessel="beaker"
+        reagent="red cabbage
+        solution" amount="30 g"/>
+        <Resuspend vessel="beaker"
+        time="20"/>
+    </Procedure>
+ </Synthesis>
+</XDL>
