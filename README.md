@@ -8,6 +8,22 @@ This repository contains
 - Dataset (Chem-RnD and Chem-EDU)
 - CLAIRify web interface
 
+## Albert's Modifications:
+
+- Modifications are only on the web verify.py right now and pare down the XDL into something that is more relevant for our code base
+- Removed hyper-chemistry specific things such as titration/stirring for resuspending/centrifuge etc.
+- Fixed a requirements file
+
+Thoughts:
+XDL is still pretty human readable to understand if the steps are in order, but this could be made into a visual representation and sketched out.
+
+Questions of exploration: 
+
+[] Do we need to formulate our own XDL version which will be constructed of skills that our robot can do (i.e. Centrifuge, FlaskManipulation). Proof of concept in the works!
+[] If we formulate our own XDL version, we should have a way to auto-generate the verifier and also auto-generate the XDL_description.txt
+[] We should have human feedback forwarded to the XDL and looped back into the LLM. This way they can change the directions or XDL if the ordering is incorrect. 
+[] Where are the limitations? Should users be feeding in pieces of their protocol in larger steps? Can we ingest a complex protocol with multiple repeats? 
+
 ### Tutorial
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ac-rad/xdl-generation/blob/master/tutorial.ipynb)
 
