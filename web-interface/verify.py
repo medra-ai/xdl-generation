@@ -6,9 +6,11 @@ mandatory_properties = {
     "StartResuspend": ["vessel"],
     "Resuspend": ["vessel", "time"],
     "StopResuspend": ["vessel"],
+    "Incubate": ["vessel", "time", "temp"],
     "Wait": ["time"],
     "Repeat": ["repeats"],
     "Centrifuge": ["vessel", "time", "speed", "speed_mode"],
+    "UnknownTask": ["task_description"],
 }
 
 optional_properties = {
@@ -45,10 +47,12 @@ optional_properties = {
         "continue_resuspending",
         "purpose",
     ],
+    "Incubate": ["vessel", "time", "temp"],
     "StopResuspend": ["vessel"],
     "Wait": ["time"],
     "Repeat": ["repeats", "children", "loop_variables", "iterative"],
     "Centrifuge": ["vessel", "time", "speed", "speed_mode", "temperature"],
+    "UnknownTask": ["task_description"],
 }
 
 reagent_properties = [

@@ -95,6 +95,14 @@ Stop stirring given vessel.
 format(Property	Type	Description)
 vessel	vessel	Vessel to stop stirring.
 
+Incubate:
+Incubate the element for a given amount of time.
+Make note that room temperature is at 37 celsius
+format(Property	Type	Description)
+vessel  vessel vessel to incubate about 
+time    float   time to incubate for 
+temp    float   temperature to incubate at
+
 Centrifuge:
 Centrifuge a sample
 format(Property	Type	Description)
@@ -102,6 +110,12 @@ time    float   Time to centrifuge sample for.
 speed   float   Speed at which to centrifuge the sample for. 
 speed_mode str Either XG or RPM mode
 temperature float   Temperature at which to centrifuge at
+
+UnknownTask:
+Any tasks that are not covered by the skills in XDL
+Have this stand as a placeholder for any skills or equipment that are not relevant and label the text inside as 
+format(Property	Type	Description)
+task_description    str   description of the unknown task
 
 An example of a valid XDL would be:
 <XDL>
@@ -117,6 +131,7 @@ An example of a valid XDL would be:
         cabbage solution"/>
     </Reagents>
     <Procedure>
+        <UnknownTask task_description="expose to UV light" />
         <Add vessel="beaker"
         reagent="acetic acid"
         amount="15 g"/>
